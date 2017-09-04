@@ -71,8 +71,17 @@ subtractButton.addEventListener("click", function(event){
     clearCurrentNumbers();
 });
 
+var multiplyButton = document.getElementById("multiplyButton");
+    multiplyButton.addEventListener("click", function(event){
+        console.log("MULTIPLY");
+        currentOperation = "multiply";
+        var currentNumberToLoad = parseInt(currentNumbers.join(''));
+        calculator.load(currentNumberToLoad);
+        clearCurrentNumbers();
+    });
+
 var equalButton = document.getElementById("equalButton");
-equalButton.addEventListener("click", function(event){
+    equalButton.addEventListener("click", function(event){
     console.log("GET result");
     
     //when user hits EQUAL check what current operation is
@@ -82,22 +91,43 @@ equalButton.addEventListener("click", function(event){
 
         var currentNumberToLoad = parseInt(currentNumbers.join("")); //456
         calculator.add(currentNumberToLoad)
-        }
-    else if(currentOperation === "subtract"){
+        };
+
+    if(currentOperation === "subtract"){
         console.log("WILL SUBTRACT");
         console.log("calculator total", calculator.getTotal());
 
         var currentNumberToLoad = parseInt(currentNumbers.join("")); //456
         calculator.subtract(currentNumberToLoad)
-        }
+        };
+
+    if(currentOperation === "multiply"){
+        console.log("WILL MULTIPLY");
+        console.log("calculator total", calculator.getTotal());
+
+        var currentNumberToLoad = parseInt(currentNumbers.join(""));
+        calculator.multiply(currentNumberToLoad)
+    };
+
 
     var result = calculator.getTotal();
     console.log("result", result);
+
     clearCurrentNumbers();
+
+
+
+
+// OUTPUTS RESULT INTO HTML
+document.getElementById("resultHTML").innerHTML = result;
+
+
 });
 
 
-
+var DOMstrings = {
+      numberHolder: "numberHolder"
+  }
 
 /*
 //adding a new button FOR FUN --- DELETE LATER

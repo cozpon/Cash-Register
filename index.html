@@ -6,39 +6,58 @@
   </head>
   <body>
 
+  <div id= "resultHTML">
+
+  </div>
+
+   <div class="addContainer">
+            
+            <input class="numberHolder" placeholder="x" type="text">
+            </div>
+       
+
   <div id="calculator">
-    <div id="total">
-    </div>
         <div id="numbers">
         <table class = "calculatorFramework", cellspacing="40">
+         <tr>
+          <td></td>
+           <td></td>
+            <td></td>
+         <td id="divideButton">÷</td>
+          </tr>
+        
+
+            <tr>
+             <td class="keys" data-number="7">7</td>
+             <td class="keys" data-number="8">8</td>
+             <td class="keys" data-number="9">9</td>
+             <td id="multiplyButton">x</td>
+          </tr>
+           <tr>
+            <td class="keys" data-number="4">4</td>
+            <td class="keys" data-number="5">5</td>
+            <td class="keys" data-number="6">6</td>
+            <td id="subtractButton">-</td>
+          </tr>
           <tr>
             <td class="keys" data-number="1">1</td>
             <td class="keys" data-number="2">2</td>
             <td class="keys" data-number="3">3</td>
+            <td id="addButton">+</td>
           </tr>
+         
+          
           <tr>
-            <td class="keys" data-number="4">4</td>
-            <td class="keys" data-number="5">5</td>
-            <td class="keys" data-number="6">6</td>
-          </tr>
-           <tr>
-             <td class="keys" data-number="7">7</td>
-             <td class="keys" data-number="8">8</td>
-             <td class="keys" data-number="9">9</td>
-          </tr>
-          <tr>
+             
             <td></td>
             <td class="keys" data-number="0">0</td>
+            <td></td>
+            <td id="equalButton">=</td>
             </tr>
             </div>
             </div>
 
-        <div id="operators">
         <tr>
-        <td id="addButton">+</td>
-        <td id="subtractButton">-</td>
-        <td id="equalButton">=</td>
-        <td id="clearButton">clr</td>
         </tr>
         </div>
     </table> 
