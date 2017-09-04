@@ -1,18 +1,16 @@
  console.log("sanity check");
 
-
+//Connects to calculator.js
 var calculator = calculatorModule();
-var currentNumber = null;
-// have to do wierd stuff with STATE VARIABLE
-// i want users to be able to add 125 + 45 
 var currentNumbers = []; // every time we initiate an operation (add or subtract), clear this!
-var currentOperator = null;
+var currentOperation = null;
 
 
 
 
 var keys = document.querySelectorAll(".keys");
 var calculatorFramework = document.querySelector(".calculatorFramework");
+
 
 function clearCurrentNumbers(){
     //resets current internal state
@@ -26,7 +24,7 @@ function clearCurrentNumbers(){
 function addKeyClickHandlers(key){
     key.addEventListener("click", function(event){
     console.log("What NUMBER am I?", event.currentTarget.dataset.number); 
-    var numberValue = parseInt(event.currentTarget.dataset.number);
+    var numberValue = parseFloat(event.currentTarget.dataset.number);
     // This is how to do it below:
     currentNumbers.push(numberValue);
     // var currentNumberToLoad = parseInt(currentNumbers.join("")); 
@@ -44,12 +42,11 @@ keys.forEach(addKeyClickHandlers);
 var addButton = document.getElementById("addButton");
 addButton.addEventListener("click", function(event){
     console.log("Add Me");
-    // don't ADD yet ---- calculator.add(5);
-    // my intention is to eventually add two numbers
     currentOperation = "add";
+    //Changes currentOperation from null to "add" in equalsButton loop
 
     // save the current set of numbers inputted by user
-    var currentNumberToLoad = parseInt(currentNumbers.join('')); // 125
+    var currentNumberToLoad = parseFloat(currentNumbers.join('')); // 125
 
     calculator.load(currentNumberToLoad);
 
@@ -64,7 +61,7 @@ subtractButton.addEventListener("click", function(event){
     currentOperation = "subtract";
 
     // save the current set of numbers inputted by user
-    var currentNumberToLoad = parseInt(currentNumbers.join('')); // 125
+    var currentNumberToLoad = parseFloat(currentNumbers.join('')); // 125
 
     calculator.load(currentNumberToLoad);
 
@@ -75,7 +72,16 @@ var multiplyButton = document.getElementById("multiplyButton");
     multiplyButton.addEventListener("click", function(event){
         console.log("MULTIPLY");
         currentOperation = "multiply";
-        var currentNumberToLoad = parseInt(currentNumbers.join(''));
+        var currentNumberToLoad = parseFloat(currentNumbers.join(''));
+        calculator.load(currentNumberToLoad);
+        clearCurrentNumbers();
+    });
+
+var divideButton = document.getElementById("divideButton");
+    divideButton.addEventListener("click", function(event){
+        console.log("DIVIDE");
+        currentOperation = "divide";
+        var currentNumberToLoad = parseFloat(currentNumbers.join(''));
         calculator.load(currentNumberToLoad);
         clearCurrentNumbers();
     });
@@ -89,7 +95,7 @@ var equalButton = document.getElementById("equalButton");
         console.log("WILL DO ADDING");
         console.log("calculator total", calculator.getTotal());
 
-        var currentNumberToLoad = parseInt(currentNumbers.join("")); //456
+        var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
         calculator.add(currentNumberToLoad)
         };
 
@@ -97,7 +103,7 @@ var equalButton = document.getElementById("equalButton");
         console.log("WILL SUBTRACT");
         console.log("calculator total", calculator.getTotal());
 
-        var currentNumberToLoad = parseInt(currentNumbers.join("")); //456
+        var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
         calculator.subtract(currentNumberToLoad)
         };
 
@@ -105,9 +111,18 @@ var equalButton = document.getElementById("equalButton");
         console.log("WILL MULTIPLY");
         console.log("calculator total", calculator.getTotal());
 
-        var currentNumberToLoad = parseInt(currentNumbers.join(""));
+        var currentNumberToLoad = parseFloat(currentNumbers.join(""));
         calculator.multiply(currentNumberToLoad)
     };
+
+     if(currentOperation === "divide"){
+        console.log("WILL MULTIPLY");
+        console.log("calculator total", calculator.getTotal());
+
+        var currentNumberToLoad = parseFloat(currentNumbers.join(""));
+        calculator.divide(currentNumberToLoad)
+    };
+
 
 
     var result = calculator.getTotal();
@@ -116,10 +131,9 @@ var equalButton = document.getElementById("equalButton");
     clearCurrentNumbers();
 
 
-
-
 // OUTPUTS RESULT INTO HTML
-document.getElementById("resultHTML").innerHTML = result;
+ // document.querySelector("numberHolder").innerHTML = result;
+
 
 
 });
@@ -139,17 +153,5 @@ fictionalNumber.dataset.mustBeAValidVariableName = "cat";
 
 calculatorFramework.appendChild(fictionalNumber);
 */
-
-
-
-
-
-
-
-
-
-
-//do it the long way first, and then Refactor (taking existing working code, not changing the behaviour, just improving the code. being DRY (don't repeat yourself))
-
 
 
