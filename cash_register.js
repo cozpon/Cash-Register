@@ -25,19 +25,14 @@ function addKeyClickHandlers(key){
     key.addEventListener("click", function(event){
     console.log("What NUMBER am I?", event.currentTarget.dataset.number); 
     var numberValue = parseFloat(event.currentTarget.dataset.number);
-    // This is how to do it below:
     currentNumbers.push(numberValue);
-    // var currentNumberToLoad = parseInt(currentNumbers.join("")); 
-    // validate your assumtions (WHEN DEBUGGING)
-    //console.log(currentNumberToLoad)
-    //calculator.load(currentNumberToLoad);
     });
 };
 
 keys.forEach(addKeyClickHandlers);
    
 
-
+/////////////////////////// CALCULATOR OPERATIONS
 
 var addButton = document.getElementById("addButton");
 addButton.addEventListener("click", function(event){
@@ -75,7 +70,7 @@ var multiplyButton = document.getElementById("multiplyButton");
         var currentNumberToLoad = parseFloat(currentNumbers.join(''));
         calculator.load(currentNumberToLoad);
         clearCurrentNumbers();
-    });
+});
 
 var divideButton = document.getElementById("divideButton");
     divideButton.addEventListener("click", function(event){
@@ -84,7 +79,8 @@ var divideButton = document.getElementById("divideButton");
         var currentNumberToLoad = parseFloat(currentNumbers.join(''));
         calculator.load(currentNumberToLoad);
         clearCurrentNumbers();
-    });
+});
+
 
 var equalButton = document.getElementById("equalButton");
     equalButton.addEventListener("click", function(event){
@@ -124,14 +120,13 @@ var equalButton = document.getElementById("equalButton");
     };
 
 
-
     var result = calculator.getTotal();
     console.log("result", result);
-
     clearCurrentNumbers();
 
 
 // OUTPUTS RESULT INTO HTML
+ document.getElementById("resultHTML").innerHTML = result; 
  // document.querySelector("numberHolder").innerHTML = result;
 
 
