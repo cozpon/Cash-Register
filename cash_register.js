@@ -4,10 +4,6 @@
 var calculator = calculatorModule();
 var currentNumbers = []; // every time we initiate an operation (add or subtract), clear this!
 var currentOperation = null;
-
-
-
-
 var keys = document.querySelectorAll(".keys");
 var calculatorFramework = document.querySelector(".calculatorFramework");
 
@@ -15,11 +11,6 @@ var calculatorFramework = document.querySelector(".calculatorFramework");
 function clearCurrentNumbers(){
     //resets current internal state
     currentNumbers = [];
-};
-
-function storeNumberInHolder(){
-    // stores number in UI holder, shows 2 + 2 =, then returns result
-    startNum = [];
 };
 
 
@@ -39,14 +30,20 @@ function addKeyClickHandlers(key){
     // add number or . to the end (using push() to add into array)
     // 
 
-    if(key === "number" &&){ numberValue + "." + numberValue
-}
+   // if(key === "number" &&){ numberValue + "." + numberValue
+
+
+//}
     });
 
 };
 
 keys.forEach(addKeyClickHandlers);
    
+
+
+
+
 
 /////////////////////////// CALCULATOR OPERATIONS
 
