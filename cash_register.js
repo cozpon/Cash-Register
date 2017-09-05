@@ -126,8 +126,8 @@ var equalButton = document.getElementById("equalButton");
 
 
 // OUTPUTS RESULT INTO HTML
- document.getElementById("resultHTML").innerHTML = result; 
- // document.querySelector("numberHolder").innerHTML = result;
+ document.querySelector(DOMstrings.numberHolder).value = result;
+
 
 
 
@@ -135,7 +135,7 @@ var equalButton = document.getElementById("equalButton");
 
 
 var DOMstrings = {
-      numberHolder: "numberHolder"
+      numberHolder: ".numberHolder"
   }
 
 /*

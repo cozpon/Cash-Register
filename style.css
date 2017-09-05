@@ -25,9 +25,6 @@ table.calculatorFramework {
 
 
 
-
-
-
 table.calculatorFramework td:hover {
     background-color: black;
     color: darkgrey;
@@ -53,12 +50,12 @@ td { empty-cells: hide;
   
 }
 
-.addContainer {
+.numberDisplay {
     border: 1.5px solid #e7e7e7;
     font-size: 14px;
     padding: 12px 40px;
-    margin-top: 150px;
-    margin-right: 590px;
+    margin-top: 175px;
+    margin-right: 90px;
     margin-left: 440px;
     border-radius: 20px;
     z-index: 2;
