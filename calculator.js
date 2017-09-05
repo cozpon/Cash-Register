@@ -7,23 +7,12 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
- var calculatorModule = function(){
+ var calculatorModule = (function(){
 
    var memory = 0
    var total = 0
 
-   var calculator = {
-    load: load,
-    getTotal: getTotal,
-    add: add,
-    subtract: subtract,
-    multiply: multiply,
-    divide: divide,
-    recallMemory: recallMemory,
-    saveMemory: saveMemory,
-    clearMemory: clearMemory,
-
-};
+   
 
 
   /**
@@ -118,5 +107,17 @@
     } 
 }
 
-   return calculator;
- };
+  return {
+    load: load,
+    getTotal: getTotal,
+    add: add,
+    subtract: subtract,
+    multiply: multiply,
+    divide: divide,
+    recallMemory: recallMemory,
+    saveMemory: saveMemory,
+    clearMemory: clearMemory,
+
+};
+
+ });

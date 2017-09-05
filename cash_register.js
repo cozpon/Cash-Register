@@ -17,16 +17,32 @@ function clearCurrentNumbers(){
     currentNumbers = [];
 };
 
+function storeNumberInHolder(){
+    // stores number in UI holder, shows 2 + 2 =, then returns result
+    startNum = [];
+};
 
 
 
 // hitting all the KEY ID's, querySelectorALL makes it a DOM collection
 function addKeyClickHandlers(key){
     key.addEventListener("click", function(event){
-    console.log("What NUMBER am I?", event.currentTarget.dataset.number); 
+    console.log("This Numer Is, ", event.currentTarget.dataset.number); 
     var numberValue = parseFloat(event.currentTarget.dataset.number);
     currentNumbers.push(numberValue);
+    // Shows clicked number in UI
+    document.querySelector(DOMstrings.numberHolder).value = event.currentTarget.dataset.number;
+
+
+
+    // Store number when pressed in UI (maybe in an array)
+    // add number or . to the end (using push() to add into array)
+    // 
+
+    if(key === "number" &&){ numberValue + "." + numberValue
+}
     });
+
 };
 
 keys.forEach(addKeyClickHandlers);
@@ -46,6 +62,7 @@ addButton.addEventListener("click", function(event){
     calculator.load(currentNumberToLoad);
 
     clearCurrentNumbers();
+    document.querySelector(DOMstrings.numberHolder).value = "+";
 });
 
 var subtractButton = document.getElementById("subtractButton");
@@ -61,6 +78,7 @@ subtractButton.addEventListener("click", function(event){
     calculator.load(currentNumberToLoad);
 
     clearCurrentNumbers();
+    document.querySelector(DOMstrings.numberHolder).value = "-";
 });
 
 var multiplyButton = document.getElementById("multiplyButton");
@@ -70,6 +88,8 @@ var multiplyButton = document.getElementById("multiplyButton");
         var currentNumberToLoad = parseFloat(currentNumbers.join(''));
         calculator.load(currentNumberToLoad);
         clearCurrentNumbers();
+        document.querySelector(DOMstrings.numberHolder).value = "x";
+
 });
 
 var divideButton = document.getElementById("divideButton");
@@ -79,16 +99,18 @@ var divideButton = document.getElementById("divideButton");
         var currentNumberToLoad = parseFloat(currentNumbers.join(''));
         calculator.load(currentNumberToLoad);
         clearCurrentNumbers();
+        document.querySelector(DOMstrings.numberHolder).value = "÷";
 });
 
 
 var equalButton = document.getElementById("equalButton");
     equalButton.addEventListener("click", function(event){
     console.log("GET result");
-    
+   // document.querySelector(DOMstrings.numberHolder).value = (currentNumberToLoad + currentOperation);
+
     //when user hits EQUAL check what current operation is
     if(currentOperation === "add"){
-        console.log("WILL DO ADDING");
+        console.log("ADDING");
         console.log("calculator total", calculator.getTotal());
 
         var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
@@ -96,7 +118,7 @@ var equalButton = document.getElementById("equalButton");
         };
 
     if(currentOperation === "subtract"){
-        console.log("WILL SUBTRACT");
+        console.log("SUBTRACTING");
         console.log("calculator total", calculator.getTotal());
 
         var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
@@ -104,7 +126,7 @@ var equalButton = document.getElementById("equalButton");
         };
 
     if(currentOperation === "multiply"){
-        console.log("WILL MULTIPLY");
+        console.log("MULTIPLYING");
         console.log("calculator total", calculator.getTotal());
 
         var currentNumberToLoad = parseFloat(currentNumbers.join(""));
@@ -112,7 +134,7 @@ var equalButton = document.getElementById("equalButton");
     };
 
      if(currentOperation === "divide"){
-        console.log("WILL MULTIPLY");
+        console.log("DIVIDE");
         console.log("calculator total", calculator.getTotal());
 
         var currentNumberToLoad = parseFloat(currentNumbers.join(""));
@@ -125,8 +147,8 @@ var equalButton = document.getElementById("equalButton");
     clearCurrentNumbers();
 
 
-// OUTPUTS RESULT INTO HTML
- document.querySelector(DOMstrings.numberHolder).value = result;
+// OUTPUTS RESULT INTO HTML numberDisplay
+document.querySelector(DOMstrings.numberHolder).value = result;
 
 
 
@@ -136,6 +158,7 @@ var equalButton = document.getElementById("equalButton");
 
 var DOMstrings = {
       numberHolder: ".numberHolder"
+
   }
 
 /*
