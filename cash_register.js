@@ -25,16 +25,6 @@ function addKeyClickHandlers(key){
       // Shows clicked number in UI
       document.querySelector(DOMstrings.numberHolder).value = currentNumbers.join('');
 
-
-
-    // Store number when pressed in UI (maybe in an array)
-    // add number or . to the end (using push() to add into array)
-    //
-
-   // if(key === "number" &&){ numberValue + "." + numberValue
-
-
-//}
     });
 
 };
@@ -143,11 +133,18 @@ document.querySelector(DOMstrings.numberHolder).value = result;
 
 });
 
+// CLEARS NUMBER DISPLAY
+var clear = document.getElementById("clearButton");
+clear.addEventListener("click", (function clearNumbers(){
+document.querySelector(DOMstrings.numberHolder).value = null;
+
+}));
+
+
+
 
 var DOMstrings = {
       numberHolder: ".numberHolder",
-
-
   };
 
 /*
