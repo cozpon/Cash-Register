@@ -1,6 +1,6 @@
  console.log("sanity check");
 
-//Connects to calculator.js
+// Connects to calculator.js
 var calculator = calculatorModule();
 var currentNumbers = []; // every time we initiate an operation (add or subtract), clear this!
 var currentOperation = null;
@@ -9,26 +9,27 @@ var calculatorFramework = document.querySelector(".calculatorFramework");
 
 
 function clearCurrentNumbers(){
-    //resets current internal state
+
+    // resets current internal state
+
     currentNumbers = [];
 };
-
 
 
 // hitting all the KEY ID's, querySelectorALL makes it a DOM collection
 function addKeyClickHandlers(key){
     key.addEventListener("click", function(event){
-    console.log("This Numer Is, ", event.currentTarget.dataset.number); 
-    var numberValue = parseFloat(event.currentTarget.dataset.number);
-    currentNumbers.push(numberValue);
-    // Shows clicked number in UI
-    document.querySelector(DOMstrings.numberHolder).value = event.currentTarget.dataset.number;
+      var stringValue = event.currentTarget.dataset.number;
+      console.log("This Numer Is, ", stringValue);
+      currentNumbers.push(stringValue);
+      // Shows clicked number in UI
+      document.querySelector(DOMstrings.numberHolder).value = event.currentTarget.dataset.number;
 
 
 
     // Store number when pressed in UI (maybe in an array)
     // add number or . to the end (using push() to add into array)
-    // 
+    //
 
    // if(key === "number" &&){ numberValue + "." + numberValue
 
@@ -39,7 +40,6 @@ function addKeyClickHandlers(key){
 };
 
 keys.forEach(addKeyClickHandlers);
-   
 
 
 
@@ -54,7 +54,7 @@ addButton.addEventListener("click", function(event){
     //Changes currentOperation from null to "add" in equalsButton loop
 
     // save the current set of numbers inputted by user
-    var currentNumberToLoad = parseFloat(currentNumbers.join('')); // 125
+    var currentNumberToLoad = parseFloat(currentNumbers.join('')); // ["1", "2", "5"] --> "125"
 
     calculator.load(currentNumberToLoad);
 
@@ -103,40 +103,34 @@ var divideButton = document.getElementById("divideButton");
 var equalButton = document.getElementById("equalButton");
     equalButton.addEventListener("click", function(event){
     console.log("GET result");
+    var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
+
    // document.querySelector(DOMstrings.numberHolder).value = (currentNumberToLoad + currentOperation);
 
     //when user hits EQUAL check what current operation is
     if(currentOperation === "add"){
         console.log("ADDING");
         console.log("calculator total", calculator.getTotal());
-
-        var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
-        calculator.add(currentNumberToLoad)
-        };
+        calculator.add(currentNumberToLoad);
+    }
 
     if(currentOperation === "subtract"){
         console.log("SUBTRACTING");
         console.log("calculator total", calculator.getTotal());
-
-        var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
-        calculator.subtract(currentNumberToLoad)
-        };
+        calculator.subtract(currentNumberToLoad);
+    }
 
     if(currentOperation === "multiply"){
         console.log("MULTIPLYING");
         console.log("calculator total", calculator.getTotal());
-
-        var currentNumberToLoad = parseFloat(currentNumbers.join(""));
-        calculator.multiply(currentNumberToLoad)
-    };
+        calculator.multiply(currentNumberToLoad);
+    }
 
      if(currentOperation === "divide"){
         console.log("DIVIDE");
         console.log("calculator total", calculator.getTotal());
-
-        var currentNumberToLoad = parseFloat(currentNumbers.join(""));
-        calculator.divide(currentNumberToLoad)
-    };
+        calculator.divide(currentNumberToLoad);
+    }
 
 
     var result = calculator.getTotal();
@@ -147,16 +141,14 @@ var equalButton = document.getElementById("equalButton");
 // OUTPUTS RESULT INTO HTML numberDisplay
 document.querySelector(DOMstrings.numberHolder).value = result;
 
-
-
-
 });
 
 
 var DOMstrings = {
-      numberHolder: ".numberHolder"
+      numberHolder: ".numberHolder",
 
-  }
+
+  };
 
 /*
 //adding a new button FOR FUN --- DELETE LATER

@@ -9,10 +9,9 @@
  */
  var calculatorModule = (function(){
 
-   var memory = 0
-   var total = 0
+   var memory = 0;
+   var total = 0;
 
-   
 
 
   /**
@@ -24,7 +23,7 @@
     validate(x);
     total = x;
     return total;
-   };
+   }
 
   /**
    * Return the value of `total`
@@ -32,7 +31,7 @@
    */
    function getTotal(){
     return total;
-   };
+   }
 
   /**
    * Sums the value passed in with `total`
@@ -42,7 +41,7 @@
     validate(x);
     total += x;
     return total;
-   };
+   }
 
   /**
    * Subtracts the value passed in from `total`
@@ -52,7 +51,7 @@
     validate(x);
     total -= x;
     return total;
-   };
+   }
 
   /**
    * Multiplies the value by `total`
@@ -62,7 +61,7 @@
     validate(x);
     total *= x;
     return total;
-   };
+   }
 
   /**
    * Divides the value passing in by `total`
@@ -72,7 +71,7 @@
     validate(x);
     total /= x;
     return total;
-   };
+   }
 
   /**
    * Return the value stored at `memory`
@@ -101,10 +100,10 @@
   /**
    * Validation
    */
-   function validate(x){ 
+   function validate(x){
     if (typeof x !== "number"){
     throw new Error("Input a Number");
-    } 
+    }
 }
 
   return {
