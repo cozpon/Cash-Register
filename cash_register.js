@@ -23,7 +23,7 @@ function addKeyClickHandlers(key){
       console.log("This Numer Is, ", stringValue);
       currentNumbers.push(stringValue);
       // Shows clicked number in UI
-      document.querySelector(DOMstrings.numberHolder).value = event.currentTarget.dataset.number;
+      document.querySelector(DOMstrings.numberHolder).value = currentNumbers.join('');
 
 
 
