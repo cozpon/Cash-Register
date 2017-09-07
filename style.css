@@ -52,18 +52,15 @@ td { empty-cells: hide;
 
 .numberDisplay {
     border: 1.5px solid #e7e7e7;
-    font-size: 14px;
-    padding: 12px 10px;
-    margin-top: 160px;
-    margin-right: 80px;
 
-    border-radius: 20px;
+
 
 }
 
 input.numberHolder {
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 14px;
+    padding: 12px 20px;
 
 }
 

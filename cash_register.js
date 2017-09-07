@@ -6,14 +6,43 @@ var currentNumbers = []; // every time we initiate an operation (add or subtract
 var currentOperation = null;
 var keys = document.querySelectorAll(".keys");
 var calculatorFramework = document.querySelector(".calculatorFramework");
-
-
+ // resets current internal state
 function clearCurrentNumbers(){
-
-    // resets current internal state
-
     currentNumbers = [];
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+// `[clear]` will clear the display
+// `[get balance]` will display the current balance
+// `[deposit cash]` will add the amount currently in the `( display )` to the cash register, then clears the display
+// `[withdraw cash]` will remove the amount currently in the `( display )` to the cash register, then clears the display
+// FOR STORAGE, MAKE A SEPARATE STORAGE CONTAINER AND INSTEAD OF CLEARING CURRENT NUMBERS AFTER EACH FUNCTION RUNS,
+// STORE THE NUMBER INSIDE OF THE CONTAINER INSTEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // hitting all the KEY ID's, querySelectorALL makes it a DOM collection
@@ -26,7 +55,6 @@ function addKeyClickHandlers(key){
       document.querySelector(DOMstrings.numberHolder).value = currentNumbers.join('');
 
     });
-
 };
 
 keys.forEach(addKeyClickHandlers);
@@ -45,7 +73,7 @@ addButton.addEventListener("click", function(event){
 
     // save the current set of numbers inputted by user
     var currentNumberToLoad = parseFloat(currentNumbers.join('')); // ["1", "2", "5"] --> "125"
-
+    // loads current number into calculator
     calculator.load(currentNumberToLoad);
 
     clearCurrentNumbers();
@@ -53,19 +81,13 @@ addButton.addEventListener("click", function(event){
 });
 
 var subtractButton = document.getElementById("subtractButton");
-subtractButton.addEventListener("click", function(event){
-    console.log("Subtract Me");
-    // don't ADD yet ---- calculator.add(5);
-    // my intention is to eventually add two numbers
-    currentOperation = "subtract";
-
-    // save the current set of numbers inputted by user
-    var currentNumberToLoad = parseFloat(currentNumbers.join('')); // 125
-
-    calculator.load(currentNumberToLoad);
-
-    clearCurrentNumbers();
-    document.querySelector(DOMstrings.numberHolder).value = "-";
+    subtractButton.addEventListener("click", function(event){
+        console.log("Subtract Me");
+        currentOperation = "subtract";
+        var currentNumberToLoad = parseFloat(currentNumbers.join('')); // 125
+        calculator.load(currentNumberToLoad);
+        clearCurrentNumbers();
+        document.querySelector(DOMstrings.numberHolder).value = "-";
 });
 
 var multiplyButton = document.getElementById("multiplyButton");
@@ -95,9 +117,8 @@ var equalButton = document.getElementById("equalButton");
     console.log("GET result");
     var currentNumberToLoad = parseFloat(currentNumbers.join("")); //456
 
-   // document.querySelector(DOMstrings.numberHolder).value = (currentNumberToLoad + currentOperation);
 
-    //when user hits EQUAL check what current operation is
+    //when user hits EQUAL, check what current operation is
     if(currentOperation === "add"){
         console.log("ADDING");
         console.log("calculator total", calculator.getTotal());
@@ -137,9 +158,32 @@ document.querySelector(DOMstrings.numberHolder).value = result;
 var clear = document.getElementById("clearButton");
 clear.addEventListener("click", (function clearNumbers(){
 document.querySelector(DOMstrings.numberHolder).value = null;
+currentNumbers = [];
+
+console.log("cleared total", calculator.getTotal());
+}));
+
+
+// DEPOSIT CASH
+var memory = [];
+var depoCash = document.getElementById("depoCash");
+depoCash.addEventListener("click", (function saveTotal(){
+  var savedCash = document.querySelector(DOMstrings.numberHolder).value;
+  console.log("saved Cash", savedCash);
+  memory = memory + savedCash;
+  console.log("memory", memory);
 
 }));
 
+
+
+
+
+// GETS BALANCE
+// var balance = document.getElementById("getBalance");
+// balance.addEventListener("click", (function balance(){
+
+// }))
 
 
 
