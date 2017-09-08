@@ -156,22 +156,25 @@ document.querySelector(DOMstrings.numberHolder).value = result;
 
 // CLEARS NUMBER DISPLAY
 var clear = document.getElementById("clearButton");
-clear.addEventListener("click", (function clearNumbers(){
-document.querySelector(DOMstrings.numberHolder).value = null;
-currentNumbers = [];
+    clear.addEventListener("click", (function clearNumbers(){
+    document.querySelector(DOMstrings.numberHolder).value = null;
+    clearCurrentNumbers();
 
-console.log("cleared total", calculator.getTotal());
+    console.log("cleared total", calculator.getTotal());
 }));
 
 
 // DEPOSIT CASH
-var memory = [];
+
 var depoCash = document.getElementById("depoCash");
-depoCash.addEventListener("click", (function saveTotal(){
-  var savedCash = document.querySelector(DOMstrings.numberHolder).value;
-  console.log("saved Cash", savedCash);
-  memory = memory + savedCash;
-  console.log("memory", memory);
+    depoCash.addEventListener("click", (function saveTotal(){
+  var moneyDeposit = parseFloat(document.querySelector(DOMstrings.numberHolder).value);
+  var currentBalance = parseFloat(calculator.recallMemory());
+  calculator.load(moneyDeposit + currentBalance);
+
+  console.log(moneyDeposit, "moneydepot");
+  console.log(currentBalance, "currentBal");
+  calculator.saveMemory();
 
 }));
 

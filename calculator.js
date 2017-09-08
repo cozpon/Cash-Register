@@ -84,7 +84,7 @@
   /**
    * Stores the value of `total` to `memory`
    */
-   function saveMemory(){
+   function saveMemory(total){
     memory = total;
     return memory;
    }
