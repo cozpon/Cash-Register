@@ -1,5 +1,3 @@
-  console.log("sanity check");
-
  /**
  * Declare a function named `calculatorModule`
  * this function will have two private variables declared inside of it.
